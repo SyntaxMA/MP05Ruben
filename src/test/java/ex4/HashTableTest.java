@@ -10,10 +10,10 @@ class HashTableTest {
     @Test
     void put() {
         ex4.HashTable hashTable = new ex4.HashTable();
-        System.out.println("Colisiona " + hashTable.getCollisionsForKey("0", 4));
-        System.out.println("Colisiona " + hashTable.getCollisionsForKey("1", 4));
-        System.out.println("Colisiona " + hashTable.getCollisionsForKey("2", 4));
-        System.out.println("Colisiona " + hashTable.getCollisionsForKey("9", 4));
+        System.out.println("Colisiones " + hashTable.getCollisionsForKey("0", 4));
+        System.out.println("Colisiones " + hashTable.getCollisionsForKey("1", 4));
+        System.out.println("Colisiones " + hashTable.getCollisionsForKey("2", 4));
+        System.out.println("Colisiones " + hashTable.getCollisionsForKey("9", 4));
 
         //2.1.1 Inserir no col·lisiona, una taula vuida
         hashTable.put("1", "Mafias");
