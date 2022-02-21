@@ -10,9 +10,21 @@ public class Enunciat {
 
     3. Grava en vídeo el següent:
         3.1. Mostra les modificacions que has fet el projecte per a poder fer servir Maven.
+
+        Add Framework support -----> Seleccionar Maven
+
+        He cambiado el pom.xml, en la parte de los plugins he tenido que añadir los dos plugins de maven.
+
+        Modificar el proyect Structure -------> poner carpeta java en azul y el resources bien
+
         3.2. Mostra el log de GitHub, en concret la línia on es veuen les proves executades, per a demostrar que
              l'execució de proves sobre GitHub funciona correctament.
+
+        Ir al github, en los logs fijarse en el Build With Maven de la parte inferior.
+
         3.3. Explica en què consisteix el concepte de Continuous Integration (CI) i quina relació té amb el que
              acabes de fer en aquest exercici.
+
+            Explicar
 */
 }

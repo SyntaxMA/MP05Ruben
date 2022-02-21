@@ -14,5 +14,6 @@ public class Enunciat {
     4. Torna a executar els jocs de proves per a comprovar que el codi segueix funcionant correctament, ja que al
        fer-hi canvis refactoritzant es corre el risc de trencar el codi.
 
+       En este ejercicio lo que hacemos es lo que llamamos extraccion de clase, para ello extraemos el metodo main que encontramos en la parte inferior del Hash Table del ejercicio 2.
 */
 }
