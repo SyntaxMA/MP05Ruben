@@ -9,11 +9,8 @@ class HashTableTest {
 
     @Test
     void put() {
+
         ex3.HashTable hashTable = new ex3.HashTable();
-        System.out.println("Colisiones " + hashTable.getCollisionsForKey("0", 4));
-        System.out.println("Colisiones " + hashTable.getCollisionsForKey("1", 4));
-        System.out.println("Colisiones " + hashTable.getCollisionsForKey("2", 4));
-        System.out.println("Colisiones " + hashTable.getCollisionsForKey("9", 4));
 
         //2.1.1 Inserir no col·lisiona, una taula vuida
         hashTable.put("1", "Mafias");

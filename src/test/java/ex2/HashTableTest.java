@@ -9,11 +9,15 @@ class HashTableTest {
 
     @Test
     void put() {
-        ex3.HashTable hashTable = new ex3.HashTable();
-        System.out.println("Colisiones " + hashTable.getCollisionsForKey("0", 4));
-        System.out.println("Colisiones " + hashTable.getCollisionsForKey("1", 4));
-        System.out.println("Colisiones " + hashTable.getCollisionsForKey("2", 4));
-        System.out.println("Colisiones " + hashTable.getCollisionsForKey("9", 4));
+
+        ex2.HashTable hashTable = new ex2.HashTable();
+
+        System.out.println("Saber colisiones: " + hashTable.getCollisionsForKey("0", 5));
+        System.out.println("Saber colisiones: " + hashTable.getCollisionsForKey("1", 5));
+        System.out.println("Saber colisiones: " + hashTable.getCollisionsForKey("2", 5));
+        System.out.println("Saber colisiones: " + hashTable.getCollisionsForKey("3", 5));
+        System.out.println("Saber colisiones: " + hashTable.getCollisionsForKey("5", 5));
+        System.out.println("Saber colisiones: " + hashTable.getCollisionsForKey("9", 5));
 
         //2.1.1 Inserir no col·lisiona, una taula vuida
         hashTable.put("1", "Mafias");
@@ -72,7 +76,7 @@ class HashTableTest {
 
     @Test
     void get() {
-        ex3.HashTable hashTable = new ex3.HashTable();
+        ex2.HashTable hashTable = new ex2.HashTable();
         //2.1.8 Obtenir no col·lisiona, una taula vuida.
         assertNull(hashTable.get("0"));
 
@@ -103,7 +107,7 @@ class HashTableTest {
 
     @Test
     void drop() {
-        ex3.HashTable hashTable = new ex3.HashTable();
+        ex2.HashTable hashTable = new ex2.HashTable();
         hashTable.put("1", "Mafias");
         hashTable.put("12", "Casinos");
         hashTable.put("23", "Discotecas");
