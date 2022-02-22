@@ -130,46 +130,45 @@ public class Enunciat {
     A continuació es detalla tot el que cal comprovar dins els jocs de proves.
 
     Put:
-        S'ha de fer servir el mètode "toString" per a comprovar que la taula conté els elements correctes després de
-        fer servir "put".
+        S'ha de fer servir el mètode "toString" per a comprovar que la taula conté els elements correctes després de fer servir "put".
 
         S'ha de fer servir el mètode "put" generar les següents situacions:
-            Inserir un element que no col·lisiona dins una taula vuida.
-            Inserir un element que no col·lisiona dins una taula no vuida.
-            Inserir un element que col·lisiona dins una taula no vuida, que es col·locarà en 2a posició dins el mateix bucket.
-            Inserir un element que col·lisiona dins una taula no vuida, que es col·locarà en 3a posició dins el mateix bucket.
-            Inserir un elements que ja existeix (update) sobre un element que no col·lisiona dins una taula vuida.
-            Inserir un elements que ja existeix (update) sobre un element que no col·lisiona dins una taula no vuida.
-            Inserir un elements que ja existeix (update) sobre un element que si col·lisiona (2a posició) dins una taula no vuida.
-            Inserir un elements que ja existeix (update) sobre un element que si col·lisiona (3a posició) dins una taula no vuida.
+
+             2.1.1 Inserir un element que no col·lisiona dins una taula vuida.
+             2.1.2 Inserir un element que no col·lisiona dins una taula no vuida.
+             2.1.3 Inserir un element que col·lisiona dins una taula no vuida, que es col·locarà en 2a posició dins el mateix bucket.
+             2.1.4 Inserir un element que col·lisiona dins una taula no vuida, que es col·locarà en 3a posició dins el mateix bucket.
+             ????? Inserir un elements que ja existeix (update) sobre un element que no col·lisiona dins una taula vuida.
+             2.1.5 Inserir un elements que ja existeix (update) sobre un element que no col·lisiona dins una taula no vuida.
+             2.1.6 Inserir un elements que ja existeix (update) sobre un element que si col·lisiona (2a posició) dins una taula no vuida.
+             2.1.7 Inserir un elements que ja existeix (update) sobre un element que si col·lisiona (3a posició) dins una taula no vuida.
 
     Get:
         S'ha de fer servir el mètode "get" per a comprovar que la taula retorna els elements correctes.
 
         S'ha de fer servir el mètode "put" generar les següents situacions:
-            Obtenir un element que no col·lisiona dins una taula vuida.
-            Obtenir un element que col·lisiona dins una taula (1a posició dins el mateix bucket).
-            Obtenir un element que col·lisiona dins una taula (2a posició dins el mateix bucket).
-            Obtenir un element que col·lisiona dins una taula (3a posició dins el mateix bucket).
-            Obtenir un elements que no existeix perquè la seva posició està buida.
-            Obtenir un elements que no existeix, tot i que la seva posició està ocupada per un altre que no col·lisiona.
-            Obtenir un elements que no existeix, tot i que la seva posició està ocupada per 3 elements col·lisionats.
+
+             2.2.1 Obtenir un element que no col·lisiona dins una taula vuida.
+             2.2.2 Obtenir un element que col·lisiona dins una taula (1a posició dins el mateix bucket).
+             2.2.3 Obtenir un element que col·lisiona dins una taula (2a posició dins el mateix bucket).
+             2.2.4 Obtenir un element que col·lisiona dins una taula (3a posició dins el mateix bucket).
+             2.2.5 Obtenir un elements que no existeix perquè la seva posició està buida.
+             2.2.6 Obtenir un elements que no existeix, tot i que la seva posició està ocupada per un altre que no col·lisiona.
+             2.2.7 Obtenir un elements que no existeix, tot i que la seva posició està ocupada per 3 elements col·lisionats.
 
      Drop:
-        S'ha de fer servir el mètode "toString" per a comprovar que la taula conté els elements correctes després de
-        fer servir "drop".
+        S'ha de fer servir el mètode "toString" per a comprovar que la taula conté els elements correctes després de fer servir "drop".
 
-        S'ha de crear una taula que conté un element que no col·lisiona i altres 3 elements que si col·lisionen entre ells,
-        tal i com s'ha fet a les proves anteriors.
+        S'ha de crear una taula que conté un element que no col·lisiona i altres 3 elements que si col·lisionen entre ells, tal i com s'ha fet a les proves anteriors.
 
         S'ha de fer servir el mètode "drop" generar les següents situacions:
-            Esborrar un element que no col·lisiona dins una taula.
-            Esborrar un element que si col·lisiona dins una taula (1a posició dins el mateix bucket).
-            Esborrar un element que si col·lisiona dins una taula (2a posició dins el mateix bucket).
-            Esborrar un element que si col·lisiona dins una taula (3a posició dins el mateix bucket).
-            Eliminar un elements que no existeix perquè la seva posició està buida.
-            Eliminar un elements que no existeix, tot i que la seva posició està ocupada per un altre que no col·lisiona.
-            Eliminar un elements que no existeix, tot i que la seva posició està ocupada per 3 elements col·lisionats.
+             2.3.1 Esborrar un element que no col·lisiona dins una taula.
+             2.3.2 Esborrar un element que si col·lisiona dins una taula (1a posició dins el mateix bucket).
+             2.3.3 Esborrar un element que si col·lisiona dins una taula (2a posició dins el mateix bucket).
+             2.3.4 Esborrar un element que si col·lisiona dins una taula (3a posició dins el mateix bucket).
+             2.3.5 Eliminar un elements que no existeix perquè la seva posició està buida.
+             2.3.6 Eliminar un elements que no existeix, tot i que la seva posició està ocupada per un altre que no col·lisiona.
+             2.3.7 Eliminar un elements que no existeix, tot i que la seva posició està ocupada per 3 elements col·lisionats.
 
       Count:
         S'ha de repetir tot el que s'ha fet amb "put" i comprovar amb "count" que el número de nodes és correcte.

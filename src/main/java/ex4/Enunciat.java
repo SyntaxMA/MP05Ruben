@@ -14,5 +14,6 @@ public class Enunciat {
 
     4. Adapta els jocs de proves perquè comprovin que els canvis que has fet són correctes, ja que només estan provant
        d'emmagatzemar strings i ara es permet emmagatzemar qualsevol tipus de dada (pots provar amb algunes primitives).
+
 */
 }

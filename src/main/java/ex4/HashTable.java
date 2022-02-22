@@ -1,14 +1,7 @@
 package ex4;
 
-// Original source code: https://gist.github.com/amadamala/3cdd53cb5a6b1c1df540981ab0245479
-// Modified by Fernando Porrino Serrano for academic purposes.
-
 import java.util.ArrayList;
 
-/**
- * Implementació d'una taula de hash sense col·lisions.
- * Original source code: https://gist.github.com/amadamala/3cdd53cb5a6b1c1df540981ab0245479
- */
 public class HashTable {
     private int SIZE = 16;
     private int ITEMS = 0;
@@ -22,18 +15,18 @@ public class HashTable {
         return this.SIZE;
     }
 
-    /**
-     * Permet afegir un nou element a la taula.
-     *
-     * @param key   La clau de l'element a afegir.
-     * @param value El propi element que es vol afegir.
-     */
+    //public void put(String key, String value) {
+
     public void put(String key, Object value) {
+
+
+        // Este es el código original
+
+        /*
         int hash = getHash(key);
         final HashEntry hashEntry = new HashEntry(key, value);
 
-        // Original
-        /*if(entries[hash] == null) {
+        if(entries[hash] == null) {
             entries[hash] = hashEntry;
         }
         else {
@@ -42,31 +35,48 @@ public class HashTable {
                 temp = temp.next;
             temp.next = hashEntry;
             hashEntry.prev = temp;
-        }*/
+        } */
 
-        // Modificado
-        boolean actualizado = false;
+        // Este es el código nuevo con las modificaciones necesarias para que funcione.
+
+        int hash = getHash(key);
+        final HashEntry hashEntry = new HashEntry(key, value);
+
+        boolean actualizar = false;
 
         if (entries[hash] == null) {
+
             entries[hash] = hashEntry;
-            // Sumamos un item para que despues podamos tener los items que hay
+
+            // El primer paso que hacemos sera sumar un item para que despues podamos saber los items totales que hay.
             ITEMS++;
+
         } else {
+
+            // Esta es la parte donde veremos si haremos un insert o un update, dependiendo del value.
+
             HashEntry temp = entries[hash];
-            // Este es el ejecicio 2.1 la parte de actualizar el primero
+
             if (temp.key.equals(key)) {
+
+                // Aqui creamos un primer if que comprobará si se quiere actualizar el primer elemento que este en el bucket.
                 entries[hash].value = hashEntry.value;
+
             } else {
-                while (temp.next != null) {
+
+                while (temp.next != null){
+
                     temp = temp.next;
-                    // Este es el ejecicio 2.1 la parte de actualizar los del medio y el del final
+
+                    // Faltara crear este segundo if que buscara hasta que sea el último de los elementos que colapsan en el mismo bucket y si lo encuentra la variable actualizar sera true
                     if (temp.key.equals(key)) {
                         temp.value = hashEntry.value;
-                        actualizado = true;
+                        actualizar = true;
                     }
                 }
-                // Con este else añadimos una nueva colision si no se a actualizado y añadimos uno mas a items.
-                if (!actualizado) {
+
+                // Si Actualizar no es true significa que el elemento no estaba en la tabla aun por tanto hay que añadir en el bucket un nuevo item.
+                if (!actualizar) {
                     ITEMS++;
                     temp.next = hashEntry;
                     hashEntry.prev = temp;
@@ -75,20 +85,17 @@ public class HashTable {
         }
     }
 
-    /**
-     * Permet recuperar un element dins la taula.
-     *
-     * @param key La clau de l'element a trobar.
-     * @return El propi element que es busca (null si no s'ha trobat).
-     */
-    /* Original
-    public String get(String key) {*/
-    //Modificado
-    public Object get(String key) {
-        int hash = getHash(key);
+    // Este es el código original
+    // public String get(String key) {
 
-        //Original
-        /*if(entries[hash] != null) {
+    // Este es el código nuevo con las modificaciones necesarias para que funcione.
+    public Object get(String key) {
+
+        // Este es el código original
+
+        /*
+        int hash = getHash(key);
+        if(entries[hash] != null) {
             HashEntry temp = entries[hash];
             while( !temp.key.equals(key))
                 temp = temp.next;
@@ -96,29 +103,31 @@ public class HashTable {
         }
         return null;*/
 
-        //Modificado
+        // Este es el código nuevo con las modificaciones necesarias para que funcione.
+
+        int hash = getHash(key);
+
         if (entries[hash] != null) {
             HashEntry temp = entries[hash];
-
             while (!temp.key.equals(key)) {
+
+                // Con esto evitas el tema del NullPointerException haciendo que cuando el puntero no encuentre nada con el .next devuelva un valor null y no pete con la excepcion
                 if (temp.next == null) {
                     return null;
                 }
+
                 temp = temp.next;
+
             }
             return temp.value;
         }
         return null;
     }
 
-    /**
-     * Permet esborrar un element dins de la taula.
-     *
-     * @param key La clau de l'element a trobar.
-     */
     public void drop(String key) {
-        int hash = getHash(key);
-        //Original
+
+        // Este es el código original
+
         /*if(entries[hash] != null) {
             HashEntry temp = entries[hash];
             while( !temp.key.equals(key))
@@ -130,11 +139,14 @@ public class HashTable {
             }
         }*/
 
-        //Modificado
+        // Este es el código nuevo con las modificaciones necesarias para que funcione.
+
+        int hash = getHash(key);
+
         if (entries[hash] != null) {
             HashEntry temp = entries[hash];
 
-            //Recorre hasta pillar el key que quieres borrar
+            //Con el if que implementamos le decimos que recorra hasta pillar el key que quieres borrar.
             while (!temp.key.equals(key)) {
                 if (temp.next != null) {
                     temp = temp.next;
@@ -144,27 +156,32 @@ public class HashTable {
                 }
             }
             if (temp != null) {
-                //Este if y el siguiente son para cuando temp no tiene colisiones.
+
+                //Ambos if son para comprobar si temp no tiene colisiones.
                 if (temp.prev == null) {
                     if (temp.next == null) {
                         entries[hash] = null;
                     }
-                    //Este else es para borrar el primero de las colisiones
+
+                    //Con el else borraremos al primero de la lista.
                     else {
                         temp.next.prev = null;
                         entries[hash] = temp.next;
                     }
                 } else {
-                    //Este if es para borrar el temp que tiene previo y siguiente
+
+                    //Este if es para borrar a un elemento que este situado en el medio.
                     if (temp.next != null) {
                         temp.next.prev = temp.prev;
                         temp.prev.next = temp.next;
                     }
-                    //Este else es para borrar el ultimo.
+
+                    //Este else es para borrar el ultimo elemento dentro del bucket.
                     else {
                         temp.prev.next = null;
                     }
                 }
+                // Hay que añadir el items-- para que el count se actualize y no cuente algo que ya no esta en la tabla.
                 ITEMS--;
             }
         }

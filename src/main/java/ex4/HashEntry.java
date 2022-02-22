@@ -1,6 +1,9 @@
 package ex4;
 
 class HashEntry {
+
+    // HashEntry del ejercicio 3
+
     /*String key;
     String value;
     // Linked list of same hash entries.
@@ -14,7 +17,7 @@ class HashEntry {
     }*/
 
     String key;
-    Object value;
+    Object value;   // Value ya no es un string es un object
 
     // Linked list of same hash entries.
     HashEntry next;

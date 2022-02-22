@@ -7,7 +7,7 @@ public class Main {
         HashTable hashTable = new HashTable();
 
         // Le empezamos a poner diferentes valores hasta el numero que queramos, en mi caso hasta 26.
-        for (int i = 0; i < 26; i++) {
+        for (int i = 0; i < 50; i++) {
             final String key = String.valueOf(i);
             hashTable.put(key, key);
         }
@@ -15,6 +15,6 @@ public class Main {
         // Esto va a imprimir la estructura que va tener la Hash Table.
         HashTable.log("**** HashTable ****");
         HashTable.log(hashTable.toString());
-        HashTable.log("\nValue for key(12) : " + hashTable.get("12"));
+        HashTable.log("\nValue for key(30) : " + hashTable.get("30"));
     }
 }

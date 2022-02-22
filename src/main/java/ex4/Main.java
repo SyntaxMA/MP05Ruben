@@ -5,14 +5,14 @@ public class Main {
         HashTable hashTable = new HashTable();
 
         // Put some key values.
-        for (int i = 0; i < 250; i++) {
+        for (int i = 0; i < 50; i++) {
             final String key = String.valueOf(i);
             hashTable.put(key, key);
         }
 
         // Print the HashTable structure
-        HashTable.log("****   HashTable  ***");
+        HashTable.log("**** HashTable ****");
         HashTable.log(hashTable.toString());
-        HashTable.log("\nValue for key(20) : " + hashTable.get("20"));
+        HashTable.log("\nValue for key(30) : " + hashTable.get("30"));
     }
 }

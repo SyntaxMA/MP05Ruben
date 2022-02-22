@@ -16,12 +16,14 @@ public class HashTable {
     }
 
     public void put(String key, String value) {
-        int hash = getHash(key);
-        final HashEntry hashEntry = new HashEntry(key, value);
 
         // Este es el código original
 
-        /* if(entries[hash] == null) {
+        /*
+        int hash = getHash(key);
+        final HashEntry hashEntry = new HashEntry(key, value);
+
+        if(entries[hash] == null) {
             entries[hash] = hashEntry;
         }
         else {
@@ -33,6 +35,9 @@ public class HashTable {
         } */
 
         // Este es el código nuevo con las modificaciones necesarias para que funcione.
+
+        int hash = getHash(key);
+        final HashEntry hashEntry = new HashEntry(key, value);
 
         boolean actualizar = false;
 
@@ -51,23 +56,23 @@ public class HashTable {
 
             if (temp.key.equals(key)) {
 
-                // Aqui vemos si queremos actualizar el primero.
+                // Aqui creamos un primer if que comprobará si se quiere actualizar el primer elemento que este en el bucket.
                 entries[hash].value = hashEntry.value;
 
             } else {
 
-                while (temp.next != null) {
-                    // En esta parte del ejecicio vemos si lo que queremos es actualizar los del medio o el último.
+                while (temp.next != null){
 
                     temp = temp.next;
 
+                // Faltara crear este segundo if que buscara hasta que sea el último de los elementos que colapsan en el mismo bucket y si lo encuentra la variable actualizar sera true
                     if (temp.key.equals(key)) {
                         temp.value = hashEntry.value;
                         actualizar = true;
                     }
                 }
 
-                // Con este if veremos que si no se ha actualizado anteriormente es porque hay que añadir en ese bucket un nuevo item dentro.
+            // Si Actualizar no es true significa que el elemento no estaba en la tabla aun por tanto hay que añadir en el bucket un nuevo item.
                 if (!actualizar) {
                     ITEMS++;
                     temp.next = hashEntry;
@@ -76,7 +81,6 @@ public class HashTable {
             }
         }
     }
-
     public String get(String key) {
 
         // Este es el código original
@@ -94,15 +98,17 @@ public class HashTable {
         // Este es el código nuevo con las modificaciones necesarias para que funcione.
 
         int hash = getHash(key);
-
         if (entries[hash] != null) {
+
             HashEntry temp = entries[hash];
 
             while (!temp.key.equals(key)) {
 
+                // Con esto evitas el tema del NullPointerException haciendo que cuando el puntero no encuentre nada con el .next devuelva un valor null y no pete con la excepcion
                 if (temp.next == null) {
                     return null;
                 }
+
                 temp = temp.next;
 
             }
@@ -137,7 +143,7 @@ public class HashTable {
         if (entries[hash] != null) {
             HashEntry temp = entries[hash];
 
-            //Con el if que implementamos le decimos que recorra hasta pillar el key que quieres borrar
+            //Con el if que implementamos le decimos que recorra hasta pillar el key que quieres borrar.
             while (!temp.key.equals(key)) {
                 if (temp.next != null) {
                     temp = temp.next;
@@ -147,27 +153,32 @@ public class HashTable {
                 }
             }
             if (temp != null) {
-                //Este if y el siguiente son para cuando temp no tiene colisiones.
+
+                //Ambos if son para comprobar si temp no tiene colisiones.
                 if (temp.prev == null) {
                     if (temp.next == null) {
                         entries[hash] = null;
                     }
-                    //Este else es para borrar el primero de las colisiones
+
+                    //Con el else borraremos al primero de la lista.
                     else {
                         temp.next.prev = null;
                         entries[hash] = temp.next;
                     }
                 } else {
-                    //Este if es para borrar el temp que tiene previo y siguiente
+
+                    //Este if es para borrar a un elemento que este situado en el medio.
                     if (temp.next != null) {
                         temp.next.prev = temp.prev;
                         temp.prev.next = temp.next;
                     }
-                    //Este else es para borrar el ultimo.
+
+                    //Este else es para borrar el ultimo elemento dentro del bucket.
                     else {
                         temp.prev.next = null;
                     }
                 }
+                // Hay que añadir el items-- para que el count se actualize y no cuente algo que ya no esta en la tabla.
                 ITEMS--;
             }
         }
@@ -300,7 +311,6 @@ public class HashTable {
 
         return foundKeys;
     }
-
 
     public static void main(String[] args) {
 

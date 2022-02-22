@@ -8,6 +8,13 @@ public class Enunciat {
     2. Aplica-hi el mètode de refacció "extracció de classe" i explica per què creus que ha sigut convenient
        aplicar-los.
 
+        // Extraer el Main de la parte inferior
+
+
+        // Extraer el Hash Entry
+
+
+
     3. Aplica-hi el mètode de refacció "extracció de mètode" i explica per què creus que ha sigut convenient
        aplicar-los.
 
